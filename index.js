@@ -22,19 +22,19 @@ app.get("/", (req, res) => {
     });
 });
 
-app.post("/update-utilization", (req, res) => {
+app.post("/update-utilization", async (req, res) => {
     const { increment } = req.body;
     utilization += increment;
     res.json({ message: "Utilization updated successfully" });
 });
 
-app.post("/sell-all", (req, res) => {
+app.post("/sell-all", async (req, res) => {
     revenue = revenue + req.body.utilization * price; // calculate the revenue
     utilization = 0; // reset the utilization to 0
     res.json({ revenue }); // send the revenue back to the client
 });
 
-app.post("/reset-revenue", (req, res) => {
+app.post("/reset-revenue", async (req, res) => {
     revenue = 0;
     res.json({ revenue });
 });
