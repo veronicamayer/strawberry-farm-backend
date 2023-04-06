@@ -9,6 +9,8 @@ const PORT = 1818;
 app.use(cors());
 app.use(bodyParser.json());
 
+let utilization, maxCapacity, price, revenue;
+
 const readData = async () => {
     try {
         const data = await fs.promises.readFile("data.json");
