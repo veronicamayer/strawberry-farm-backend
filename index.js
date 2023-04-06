@@ -9,7 +9,10 @@ const PORT = 1818;
 app.use(cors());
 app.use(bodyParser.json());
 
-let utilization, maxCapacity, price, revenue;
+let utilization = 0;
+let maxCapacity = 100;
+let price = 0.3;
+let revenue = 0;
 
 const readData = async () => {
     try {
