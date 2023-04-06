@@ -9,17 +9,19 @@ const PORT = 1818;
 app.use(cors());
 app.use(bodyParser.json());
 
-try {
-    const data = await fs.promises.readFile("data.json");
-    const parsedData = JSON.parse(data);
-    utilization = parsedData.utilization;
-    maxCapacity = parsedData.maxCapacity;
-    price = parsedData.price;
-    revenue = parsedData.revenue;
-    console.log("Data loaded successfully");
-} catch (error) {
-    console.log(error);
-}
+const readData = async () => {
+    try {
+        const data = await fs.promises.readFile("data.json");
+        const parsedData = JSON.parse(data);
+        utilization = parsedData.utilization;
+        maxCapacity = parsedData.maxCapacity;
+        price = parsedData.price;
+        revenue = parsedData.revenue;
+        console.log("Data loaded successfully");
+    } catch (error) {
+        console.log(error);
+    }
+};
 
 const saveData = async () => {
     try {
